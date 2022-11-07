@@ -1,20 +1,5 @@
 import axios from 'axios'
 
-// function generateJoke() {
-//     const config = {
-//         headers: {
-//             Accept: 'application/json'
-//         }
-//     }
-//     axios.get('https://icanhazdadjoke.com', config)
-//         .then(res => {
-//             document.getElementById('joke').innerHTML = res.data.joke
-//             console.log(res);
-//         })
-
-// }
-
-
 const generateJoke = async () => {
     try {
         const config = {
@@ -23,7 +8,8 @@ const generateJoke = async () => {
             }
         }
         const res = await axios.get('https://icanhazdadjoke.com', config)
-        const joke = res.data.joke
+        const { joke } = res.data
+        // const joke = res.data.joke
         document.getElementById('joke').innerHTML = joke
         console.log(joke);
 
@@ -31,7 +17,6 @@ const generateJoke = async () => {
     catch (err) {
         console.log(err);
     }
-
-
 }
+
 export default generateJoke
